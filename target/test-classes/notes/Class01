@@ -1,0 +1,41 @@
+Given navigate to Hrms ogin page
+WEhn enter valid credentials
+And click on login button
+Then verify dashboard logo is displayed
+And verify username is correct
+
+BasClass--> starting point
+
+PageInitializer -> initialize our objects
+
+CommonMethods --> common functions
+
+In order to write a test case in cucmber you will need a feature file
+
+To have a feature file, you have to create a file wiht an extension.feature
+
+Benefits of cucumber:
+-use gherking language and plain english
+-free, open souse tool
+-compatible to use with different programming languages
+    such as Java, Ruby,.NET, python
+-compatible to use with different automation tools
+    selenium as Selenium, JUnit etc...
+
+Who can use gherkin language:
+QA
+BA
+
+In each user story(ticket), each and every requirement is called AC(Acceptance criteria)
+
+User Story:
+    Search by ID
+        Given user shall navigate to HRMS
+        When user is able to login with valid credentials
+        Then user shall see dashboard displayed
+        And user shall navigate to Employee List
+        When user shall search an employee by ID
+        Then user shall see the employee information displayed on the table
+
+
+    Search by Name
