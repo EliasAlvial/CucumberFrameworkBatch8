@@ -29,3 +29,17 @@ Feature: Add Employee Functionality
       #parameterized
       And click on save button
       Then verify that "John Jacob Jingleheimer-Schmidt" is added successfully
+
+          @examples
+  Scenario Outline: Adding multiple employees without login details
+    When enter "<FistName>", "<MiddleName>" and "<LastName>"
+    And click on save button
+    Then verify "<FistName>", "<MiddleName>" and "<LastName>" is added successfully
+
+    Examples:
+      | FistName | MiddleName | LastName|
+      | Miss     |Mary       |Mack   |
+      |All       |Dressed    |in Black|
+      | Mark     |LL          |Wagner   |
+
+

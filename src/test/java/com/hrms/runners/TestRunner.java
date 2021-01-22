@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 //when set to true but there are no unimplemented steps it will not run tests at all
 
                     dryRun = false,// when set as true, will run over the features steps and reveal unimplemented
-                    tags = { "@parameter" },
+                    tags = { "@examples" },
                     strict = false,
                     plugin = {"pretty",// will print executed steps inside console
                             "html:target/cucumber-default-reports", // generate default html report

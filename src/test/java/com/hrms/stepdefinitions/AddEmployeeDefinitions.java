@@ -43,4 +43,17 @@ public class AddEmployeeDefinitions extends CommonMethods {
         Assert.assertEquals("Verifying profile name", fullName, actualProfileName);
     }
 
+    @When("enter {string}, {string} and {string}")
+    public void enter_and(String firstName, String middleName, String lastName) {
+        addEmployeePage.sendFirstNMiddleNameNLastName(firstName,middleName, lastName);
+    }
+
+
+    @Then("verify {string}, {string} and {string} is added successfully")
+    public void verify_and_is_added_successfully(String firstName, String middleName, String lastName) {
+       String fullName=firstName+" "+middleName+" "+lastName;
+       String actualProfileName= personalDetailPage.getUserProfileName();
+       Assert.assertEquals("Verifying profile name", fullName,actualProfileName);
+    }
+
 }
