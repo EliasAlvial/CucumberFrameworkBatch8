@@ -9,6 +9,7 @@ public class PageInitializer extends BaseClass{
     public static AddEmployeePage addEmployeePage;
     public static EmployeeListPage employeeListPage;
     public static PersonalDetailPage personalDetailPage;
+    public static PIMConfigurationPage pimConfigurationPage;
 
     public static void initializePageObjects(){
         loginPage=new LoginPage();
@@ -16,6 +17,7 @@ public class PageInitializer extends BaseClass{
         addEmployeePage=new AddEmployeePage();
         employeeListPage=new EmployeeListPage();
         personalDetailPage=new PersonalDetailPage();
+        pimConfigurationPage=new PIMConfigurationPage();
 
     }
 }

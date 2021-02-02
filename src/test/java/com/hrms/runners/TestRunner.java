@@ -14,13 +14,13 @@ import org.junit.runner.RunWith;
 //when set as true will run over teh feature steps and reveal unimplemented steps in console
 //when set to true but there are no unimplemented steps it will not run tests at all
 
-                    dryRun = false,// when set as true, will run over the features steps and reveal unimplemented
-                    tags = { "@examples" },
-                    strict = false,
+                    dryRun = false,// when set as true, will run over the features steps and reveal unimplemented steps in console
+                    tags = { "@searchingById" }, //adding tag
+                    strict = false, //when set as true will dali the execution when undefined step is found
                     plugin = {"pretty",// will print executed steps inside console
-                            "html:target/cucumber-default-reports", // generate default html report
-                           "rerun:target/FailedTests.txt",
-                            "json:target/cucumber.json"
+                            "html:target/cucumber-default-reports", // generate default html report report
+                           "rerun:target/FailedTests.txt",  //generates a txt file with failed tests only
+                            "json:target/cucumber.json"//   generates json report
 }
 
 

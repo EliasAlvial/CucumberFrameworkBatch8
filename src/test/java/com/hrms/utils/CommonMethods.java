@@ -8,12 +8,16 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.UnexpectedTagNameException;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class CommonMethods extends PageInitializer {
@@ -56,7 +60,11 @@ public class CommonMethods extends PageInitializer {
     }
 
     public static void jsClick(WebElement element){
+
         getJSExecutor().executeScript("arguments[0].click();", element);
+    }
+    public static void jsSendText(WebElement element, String s){
+        getJSExecutor().executeScript("arguments[0].value='enter the value here';",element);
     }
 
     /**
@@ -88,9 +96,98 @@ public class CommonMethods extends PageInitializer {
         return sdf.format(date);
     }
 
-//            @Test public void test(){
-//            System.out.println(System.getProperty("user.dir"));
-//        }
+    /**
+     * this method will click on a radio btton or a checkbox bb the given list of elements and the value
+     * @param radioOrCheckBoxes
+     * @param value
+     */
+     public static void clickRadioOnCheckBox(List<WebElement> radioOrCheckBoxes, String value) {
+        for(WebElement radioOrCheckbox:radioOrCheckBoxes){
+            String actualValue=radioOrCheckbox.getAttribute("value").trim();
+            if(radioOrCheckbox.isEnabled() &&actualValue.equals(value)){
+                jsClick(radioOrCheckbox);
+                break;
+            }
+        }
+    }
+
+    /**
+     * this method will select a value from a given dropdown by the given visible text.
+     * @param dd
+     * @param visibleText
+     */
+
+    public static void selectDDValue(WebElement dd, String visibleText){
+//we aer using this try because there's a chance that a dropdown menu will not contain select
+         try {
 
 
+         Select select=new Select(dd); //we can use select action only when the tagname has select in it
+        List <WebElement> options=select.getOptions();// this will return a list of elements
+        for(WebElement option:options){
+            if(option.getText().equals(visibleText)){
+                select.selectByVisibleText(visibleText);
+                break;
+            }
+        }
+    }catch (UnexpectedTagNameException e){
+             e.printStackTrace();
+         }
+     }
+
+     public static void switchToFrame(int frameIndex){
+        try{
+            driver.switchTo().frame(frameIndex);
+        }catch (NoSuchFrameException e){
+            e.printStackTrace();
+        }
+     }
+    public static void switchToFrame(String nameOrId){
+        try{
+            driver.switchTo().frame(nameOrId);
+        }catch (NoSuchFrameException e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * this method will select a value from a given dropdown by the given index
+     * @param dd
+     * @param index
+     */
+    public static void selectedDDValue(WebElement dd, int index){
+
+       try {
+           Select select = new Select(dd);
+           List<WebElement> options = select.getOptions();
+           int ddSize = options.size();
+
+           if (ddSize > index) {
+               select.selectByIndex(index);
+
+           }
+       }catch (UnexpectedTagNameException e){
+           e.printStackTrace();
+       }
+    }
+
+    public static void switchToChildWindow(){
+       String mainWindow= driver.getWindowHandle();
+        Set<String> allWindows=driver.getWindowHandles();
+    }
+
+    /**
+     * this method will click on a radio btton or a checkbox bb the given list of elements byt textValue
+     * @param radioOrCheckBoxes
+     * @param value
+     */
+    public static void clickRadioOnCheckBoxByText(List<WebElement> radioOrCheckBoxes, String value) {
+        for(WebElement radioOrCheckbox:radioOrCheckBoxes){
+            String actualValue=radioOrCheckbox.getText().trim();
+            if(radioOrCheckbox.isEnabled() &&actualValue.equals(value)){
+                jsClick(radioOrCheckbox);
+                break;
+            }
+        }
+    }
 }

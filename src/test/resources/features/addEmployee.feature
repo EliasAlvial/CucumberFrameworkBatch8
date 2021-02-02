@@ -32,14 +32,26 @@ Feature: Add Employee Functionality
 
           @examples
   Scenario Outline: Adding multiple employees without login details
-    When enter "<FistName>", "<MiddleName>" and "<LastName>"
+    When enter "<FirstName>", "<MiddleName>" and "<LastName>"
     And click on save button
-    Then verify "<FistName>", "<MiddleName>" and "<LastName>" is added successfully
+    Then verify "<FirstName>", "<MiddleName>" and "<LastName>" is added successfully
 
     Examples:
-      | FistName | MiddleName | LastName|
+      | FirstName | MiddleName | LastName|
       | Miss     |Mary       |Mack   |
       |All       |Dressed    |in Black|
       | Mark     |LL          |Wagner   |
+
+    @dtWithHeader
+    Scenario: Adding multiple employees at one execution
+      When add multiple employees and verify they are added successfully
+        | FirstName | MiddleName | LastName|EmployeeID|
+        | Miss     |Mary        |Mack      |1234      |
+        |All       |Dressed     |in Black  |54321     |
+
+
+        @fromExcel
+    Scenario: Adding multiple employees from excel
+      When add multiple employees from excel "AddEmployee" sheet and verify they are added
 
 

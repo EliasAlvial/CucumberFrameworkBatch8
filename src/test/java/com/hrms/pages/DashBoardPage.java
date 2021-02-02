@@ -33,6 +33,10 @@ public class DashBoardPage extends CommonMethods{
         return dashTabsText;
     }
 
+    public void clickOnEmployeeListBtn(){
+        jsClick(employeeList);
+    }
+
     public void clickOnPIMJS(){jsClick(PIMButton); }
 
     public void ClickOnAddEmployeeBtn(){jsClick(addEmployeeBtn);
