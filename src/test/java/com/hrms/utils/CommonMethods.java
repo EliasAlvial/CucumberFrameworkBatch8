@@ -14,6 +14,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -171,10 +173,7 @@ public class CommonMethods extends PageInitializer {
        }
     }
 
-    public static void switchToChildWindow(){
-       String mainWindow= driver.getWindowHandle();
-        Set<String> allWindows=driver.getWindowHandles();
-    }
+
 
     /**
      * this method will click on a radio btton or a checkbox bb the given list of elements byt textValue
@@ -190,4 +189,29 @@ public class CommonMethods extends PageInitializer {
             }
         }
     }
+
+
+    public static void switchToChildWindow(){
+        String mainWindow=driver.getWindowHandle();
+        Set<String> allWindows= driver.getWindowHandles();
+        for (String window: allWindows
+             ) {if (!window.equals(mainWindow)){
+                 driver.switchTo().window(window);
+                 break;
+        }
+
+        }
+    }
+
+
+static String jsonFile;
+    public static String readJson(String FileName){
+        try{
+            jsonFile=new String (Files.readAllBytes(Paths.get(FileName)));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return jsonFile;
+    }
+
 }

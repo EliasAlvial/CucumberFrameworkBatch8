@@ -1,11 +1,13 @@
 package com.hrms.utils;
 
+import com.hrms.testbase.BaseClass;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-public class ConfigsReader {
+public class ConfigsReader  {
    public static Properties prop;
 
     /**

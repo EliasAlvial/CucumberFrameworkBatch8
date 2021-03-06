@@ -1,9 +1,10 @@
 package com.hrms.testbase;
 
 import com.hrms.pages.*;
+import com.hrms.utils.CommonMethods;
 import io.cucumber.java.bs.A;
 
-public class PageInitializer extends BaseClass{
+public class PageInitializer extends BaseClass {
     public static LoginPage loginPage;
     public static DashBoardPage dashBoardPage;
     public static AddEmployeePage addEmployeePage;

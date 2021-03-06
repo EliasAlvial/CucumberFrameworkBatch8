@@ -2,7 +2,7 @@ package com.hrms.stepdefinitions;
 
 import com.hrms.utils.CommonMethods;
 import com.hrms.utils.Constants;
-import com.hrms.utils.ExcelUtils;
+
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -83,27 +83,27 @@ public class AddEmployeeDefinitions extends CommonMethods {
 
         }
     }
-    @When("add multiple employees from excel {string} sheet and verify they are added")
-    public void add_multiple_employees_from_excel_sheet_and_verify_they_are_added(String sheetName) {
-        List<Map<String,String>> excelData=ExcelUtils.excelIntoListMap(Constants.TESTDATA_FILEPATH, sheetName);
-
-        for (Map<String, String>excelEmpNAme:excelData){
-            String firstName=excelEmpNAme.get("FirstName");
-            String middleName=excelEmpNAme.get("MiddleName");
-            String lastName=excelEmpNAme.get("LastName");
-            String employeeID=excelEmpNAme.get("EmployeeID");
-
-            addEmployeePage.sendFirstNMiddleNameNLastName(firstName, middleName, lastName);
-            addEmployeePage.enterEmployeeId(employeeID);
-            addEmployeePage.clickOnSaveBtn();
-
-            String actualFullName= personalDetailPage.getUserProfileName();
-            String expectedFullName=firstName+" "+middleName+" "+lastName;
-            Assert.assertEquals("Verifying profile name",expectedFullName, actualFullName);
-            dashBoardPage.clickOnEmployeeListBtn();
-
-
-        }
-    }
+//    @When("add multiple employees from excel {string} sheet and verify they are added")
+//    public void add_multiple_employees_from_excel_sheet_and_verify_they_are_added(String sheetName) {
+//        List<Map<String,String>> excelData= ExcelUtils.excelIntoListMap(Constants.TESTDATA_FILEPATH, sheetName);
+//
+//        for (Map<String, String>excelEmpNAme:excelData){
+//            String firstName=excelEmpNAme.get("FirstName");
+//            String middleName=excelEmpNAme.get("MiddleName");
+//            String lastName=excelEmpNAme.get("LastName");
+//            String employeeID=excelEmpNAme.get("EmployeeID");
+//
+//            addEmployeePage.sendFirstNMiddleNameNLastName(firstName, middleName, lastName);
+//            addEmployeePage.enterEmployeeId(employeeID);
+//            addEmployeePage.clickOnSaveBtn();
+//
+//            String actualFullName= personalDetailPage.getUserProfileName();
+//            String expectedFullName=firstName+" "+middleName+" "+lastName;
+//            Assert.assertEquals("Verifying profile name",expectedFullName, actualFullName);
+//            dashBoardPage.clickOnEmployeeListBtn();
+//
+//
+//        }
+//    }
 
 }

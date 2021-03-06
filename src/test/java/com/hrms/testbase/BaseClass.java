@@ -1,7 +1,9 @@
 package com.hrms.testbase;
 
+
 import com.hrms.utils.ConfigsReader;
 import com.hrms.utils.Constants;
+import com.sun.tools.internal.jxc.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,7 +12,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-public class BaseClass {
+public class BaseClass  {
 
     public static WebDriver driver;
     /**
